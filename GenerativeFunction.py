@@ -40,24 +40,24 @@ def random_swap(a, b):
 
 def generate_tree(num_vertex, base = 0):
     #generate a tree graph
-    edges = []
+    edges = set()
     permu_vertex = generate_permutation(num_vertex, base = base)
     for i in range(1, len(permu_vertex)): 
         u = permu_vertex[i]
         v = permu_vertex[random_int(0, i-1)]
-        edges.append(random_swap(u, v))
+        edges.add(random_swap(u, v))
     assert len(edges) == num_vertex-1
     return edges
 
 def generate_forest(num_vertex, base = 0):
     #generate a forest (>= 1 tree graph)
-    edges = []
+    edges = set()
     permu_vertex = generate_permutation(num_vertex, base = base)
     for i in range(1, len(permu_vertex)):
         if percentage_chose(70): 
             u = permu_vertex[i]
             v = permu_vertex[random_int(0, i-1)]
-            edges.append(random_swap(u, v))
+            edges.add(random_swap(u, v))
     assert len(edges) <= num_vertex-1
     return edges
 
@@ -71,7 +71,7 @@ def generate_edge(num_vertex, base = 0):
 def generate_graph(num_vertex, num_edge, duplicate = False, base = 0):
     if duplicate == False:
         assert num_edge <= num_vertex*(num_vertex-1)/2, "number of edges must be equal or lower than number of all possible edges"
-    edges = []
+    edges = set()
     for i in range(num_edge):
         edge = generate_edge(num_vertex, base = base)
         if duplicate == False:
@@ -79,7 +79,7 @@ def generate_graph(num_vertex, num_edge, duplicate = False, base = 0):
             while (u, v) in edges or (v, u) in edges:
                 u, v = generate_edge(num_vertex, base = base)
             edge = u, v
-        edges.append(edge)
+        edges.add(edge)
     assert len(edges) == num_edge
     return edges
 
@@ -95,18 +95,18 @@ def generate_connected_graph(num_vertex, num_edge, duplicate = False, base = 0):
             while (u, v) in edges or (v, u) in edges:
                 u, v = generate_edge(num_vertex, base = base)
             edge = u, v
-        edges.append(edge)
+        edges.add(edge)
     assert len(edges) == num_edge
     return edges
 
 def add_weight_egdes(edges, start, end, integer = True):
     #add weight to edges of graph. If integer = False, random float value
-    weight_edges = []
+    weight_edges = set()
     for u, v in edges:
         if integer:
-            weight_edges.append((u, v, random_int(start, end)))
+            weight_edges.add((u, v, random_int(start, end)))
         else:
-            weight_edges.append((u, v, random_float(start, end)))
+            weight_edges.add((u, v, random_float(start, end)))
     return weight_edges
 
 if __name__ == '__main__':

@@ -3,7 +3,7 @@ import os
 WINDOWS_LINE_ENDING = b'\r\n'
 UNIX_LINE_ENDING = b'\n'
 
-PROBLEM_NAME = "Tester"
+PROBLEM_NAME = "RepairingRoad"
 PROBLEM_FOLDER = "F:\\ProblemSettingBigO"
 PROBLEM_PATH = os.path.join(PROBLEM_FOLDER, PROBLEM_NAME)
 TESTCASE_FOLDER = os.path.join(PROBLEM_PATH, "testcase")
