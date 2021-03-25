@@ -1,6 +1,14 @@
 import numpy as np 
 import random
 
+def split_array(arr, num_parts):
+    #split an array into several parts
+    assert num_parts > 1, "number of splited part must greater than 1"
+    
+    split_arr = np.array_split(np.array(arr), num_parts)
+
+    return split_arr
+
 def generate_permutation(len, base = 0):
     #generate a permutaion
     return np.random.permutation(len) + base
@@ -40,24 +48,24 @@ def random_swap(a, b):
 
 def generate_tree(num_vertex, base = 0):
     #generate a tree graph
-    edges = set()
+    edges = []
     permu_vertex = generate_permutation(num_vertex, base = base)
     for i in range(1, len(permu_vertex)): 
         u = permu_vertex[i]
         v = permu_vertex[random_int(0, i-1)]
-        edges.add(random_swap(u, v))
+        edges.append(random_swap(u, v))
     assert len(edges) == num_vertex-1
     return edges
 
 def generate_forest(num_vertex, base = 0):
     #generate a forest (>= 1 tree graph)
-    edges = set()
+    edges = []
     permu_vertex = generate_permutation(num_vertex, base = base)
     for i in range(1, len(permu_vertex)):
         if percentage_chose(70): 
             u = permu_vertex[i]
             v = permu_vertex[random_int(0, i-1)]
-            edges.add(random_swap(u, v))
+            edges.append(random_swap(u, v))
     assert len(edges) <= num_vertex-1
     return edges
 
@@ -71,16 +79,27 @@ def generate_edge(num_vertex, base = 0):
 def generate_graph(num_vertex, num_edge, duplicate = False, base = 0):
     if duplicate == False:
         assert num_edge <= num_vertex*(num_vertex-1)/2, "number of edges must be equal or lower than number of all possible edges"
-    edges = set()
+    duplicate_set = set()
+    edges = []
     for i in range(num_edge):
         edge = generate_edge(num_vertex, base = base)
         if duplicate == False:
             u, v = edge
-            while (u, v) in edges or (v, u) in edges:
+            while (u, v) in duplicate_set: #or (v, u) in duplicate_set:
                 u, v = generate_edge(num_vertex, base = base)
             edge = u, v
-        edges.add(edge)
+        duplicate_set.add(edge)
+        edges.append(edge)
     assert len(edges) == num_edge
+    return edges
+
+def generate_cycle_component(verties):
+    edges = []
+    for i in range(len(verties)):
+        if i == len(verties) - 1:
+            edges.append((verties[i], verties[0]))
+        else:
+            edges.append((verties[i], verties[i+1]))
     return edges
 
 def generate_connected_graph(num_vertex, num_edge, duplicate = False, base = 0):
@@ -88,14 +107,16 @@ def generate_connected_graph(num_vertex, num_edge, duplicate = False, base = 0):
         assert num_edge <= num_vertex*(num_vertex-1)/2, "number of edges must be equal or lower than number of all possible edges"
     assert num_edge >= num_vertex-1, "number of edges must be equal or greater then number of verties minus one"
     edges = generate_tree(num_vertex = num_vertex, base = base)
+    duplicate_set = set(edges)
     for i in range(num_vertex-1, num_edge):
         edge = generate_edge(num_vertex, base = base)
         if duplicate == False:
             u, v = edge
-            while (u, v) in edges or (v, u) in edges:
+            while (u, v) in duplicate_set: #or (v, u) in duplicate_set:
                 u, v = generate_edge(num_vertex, base = base)
             edge = u, v
-        edges.add(edge)
+        duplicate_set.add(edge)
+        edges.append(edge)
     assert len(edges) == num_edge
     return edges
 
@@ -111,6 +132,7 @@ def add_weight_egdes(edges, start, end, integer = True):
 
 if __name__ == '__main__':
     #testing
-    edges = generate_forest(6)
-    for u, v in edges:
-        print(u, v)
+    split_arr = split_array([1, 5, 2, 4, 5], 3)
+    print(random.sample([6], 1))
+    for i in range(3):
+        print(split_arr[i])
