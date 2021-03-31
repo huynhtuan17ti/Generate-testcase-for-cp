@@ -8,7 +8,7 @@ import random
 from main import *
 sys.setrecursionlimit(10**6)
 
-PROBLEM_NAME = "Knapsack_2"
+PROBLEM_NAME = "19B"
 PROBLEM_FOLDER = "F:\\ProblemSettingBigO"
 PROBLEM_PATH = os.path.join(PROBLEM_FOLDER, PROBLEM_NAME)
 TESTCASE_FOLDER = os.path.join(PROBLEM_PATH, "testcase")
@@ -34,8 +34,8 @@ if __name__ == '__main__':
         os.mkdir(TESTCASE_FOLDER)
         print('Done')
  
-    NUM_TESTS = 17
-    for iTest in range(13, NUM_TESTS):
+    NUM_TESTS = 16
+    for iTest in range(15, NUM_TESTS):
         print('Generating test {} ...'.format(iTest), end = ' ')
         create_file(FILE_IN)
         os.chdir(PROBLEM_PATH)
