@@ -3,7 +3,7 @@ import random
 import math
 
 def write_array(arr):
-    return ''.join(map(str, arr))
+    return ' '.join(map(str, arr))
 
 def swap(u, v):
     return v, u
@@ -37,28 +37,19 @@ def check(a, s, n):
     else:
         return -1
 
+def change(s, pos, new):
+    l = list(s)
+    l[pos] = chr(new + ord('a'))
+    s = ''.join(l)
+    return s
+
 def writeToFile(f):
-    n = random_int(1990, 2000)
+    n = random_int(50000, 60000)
+    a = random_array(1, 60000, n)
     f.write(str(n) + '\n')
     for i in range(n):
-        t, c = random_int(0, 10), random_int(1, 10**9)
-        f.write(str(t) + ' ' + str(c) + '\n')
+        f.write(str(a[i]) + '\n')
 
-#safe
-def writeToFile_(f):
-    n = random_int(30, 35)
-    m = random_int(8, 10)
-    f.write(str(n) + ' ' + str(m) + '\n')
-    res = random_int(1, 1)
-    a = []
-    for i in range(res):
-        a.append(generate_string(n))
-
-    for i in range(m):
-        s = generate_string(n)
-        while check(a, s, n) == -1:
-            s = generate_string(n)
-
-        c = check(a, s, n)
-        f.write(write_array(s) + ' ' + str(c) + '\n')
+    
+    
 

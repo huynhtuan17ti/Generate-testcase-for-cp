@@ -6,12 +6,15 @@ import sys
 from threading import Event
 import random
 from main import *
+from config import Config
+
+cfg = Config()
 sys.setrecursionlimit(10**6)
 
-PROBLEM_NAME = "19B"
-PROBLEM_FOLDER = "F:\\ProblemSettingBigO"
-PROBLEM_PATH = os.path.join(PROBLEM_FOLDER, PROBLEM_NAME)
-TESTCASE_FOLDER = os.path.join(PROBLEM_PATH, "testcase")
+PROBLEM_NAME = cfg.PROBLEM_NAME
+PROBLEM_FOLDER = cfg.PROBLEM_FOLDER
+PROBLEM_PATH = cfg.PROBLEM_PATH
+TESTCASE_FOLDER = cfg.TESTCASE_FOLDER
 
 FILE_IN = os.path.join(PROBLEM_PATH, PROBLEM_NAME + ".inp")
 FILE_OUT = os.path.join(PROBLEM_PATH, PROBLEM_NAME + ".out")
@@ -34,8 +37,7 @@ if __name__ == '__main__':
         os.mkdir(TESTCASE_FOLDER)
         print('Done')
  
-    NUM_TESTS = 16
-    for iTest in range(15, NUM_TESTS):
+    for iTest in range(cfg.L, cfg.R + 1):
         print('Generating test {} ...'.format(iTest), end = ' ')
         create_file(FILE_IN)
         os.chdir(PROBLEM_PATH)

@@ -1,12 +1,15 @@
 import os
+from config import Config
+
+cfg = Config()
 
 WINDOWS_LINE_ENDING = b'\r\n'
 UNIX_LINE_ENDING = b'\n'
 
-PROBLEM_NAME = "19B"
-PROBLEM_FOLDER = "F:\\ProblemSettingBigO"
-PROBLEM_PATH = os.path.join(PROBLEM_FOLDER, PROBLEM_NAME)
-TESTCASE_FOLDER = os.path.join(PROBLEM_PATH, "testcase")
+PROBLEM_NAME = cfg.PROBLEM_NAME
+PROBLEM_FOLDER = cfg.PROBLEM_FOLDER
+PROBLEM_PATH = cfg.PROBLEM_PATH
+TESTCASE_FOLDER = cfg.TESTCASE_FOLDER
 
 def convert(file_path):
     with open(file_path, 'rb') as open_file:

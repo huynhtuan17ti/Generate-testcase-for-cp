@@ -6,10 +6,10 @@ from shutil import copy2
 import filecmp
 from convert_and_trimming import convert
 
-PROBLEM_NAME = '05. Micro and Coins'
-SOLUTION_NAME = 'solution'
-FOLDER_PATH = "C:\\Users\\Asus\\Dropbox\\TA Big-O Competitive Programming\\!CP01\\Level 02\\07. Chu trinh Hamilton, Euler\\" + PROBLEM_NAME
-TESTCASE_PATH = os.path.join(FOLDER_PATH, 'testcase')
+PROBLEM_NAME = '3. PHANSO'
+SOLUTION_NAME = 'sol_tuan'
+FOLDER_PATH = "C:\\Users\\Asus\\Dropbox\\TA Big-O Competitive Programming\\!CP01\\Level 02\\10. Greatest Common Divisor\\" + PROBLEM_NAME
+TESTCASE_PATH = os.path.join(FOLDER_PATH, 'test')
 
 if __name__ == '__main__':
     testcase_list = os.listdir(TESTCASE_PATH)
