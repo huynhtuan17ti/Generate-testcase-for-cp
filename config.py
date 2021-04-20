@@ -8,3 +8,9 @@ class Config(object):
 
     L = 0 # generate testcase with {}.in, {}.ans and {} in [L, R]
     R = 5
+
+    # for checking
+    CHECKING_PROBLEM = '3. PHANSO'
+    SOLUTION_NAME = 'sol_tuan'
+    CHECKING_FOLDER = "C:\\Users\\Asus\\Dropbox\\TA Big-O Competitive Programming\\!CP01\\Level 02\\10. Greatest Common Divisor\\" + PROBLEM_NAME
+    CHECKING_TESTCASE = 'test' # name of folder includes testcase

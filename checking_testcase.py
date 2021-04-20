@@ -5,11 +5,14 @@ from threading import Event
 from shutil import copy2 
 import filecmp
 from convert_and_trimming import convert
+from config import Config
 
-PROBLEM_NAME = '3. PHANSO'
-SOLUTION_NAME = 'sol_tuan'
-FOLDER_PATH = "C:\\Users\\Asus\\Dropbox\\TA Big-O Competitive Programming\\!CP01\\Level 02\\10. Greatest Common Divisor\\" + PROBLEM_NAME
-TESTCASE_PATH = os.path.join(FOLDER_PATH, 'test')
+cfg = Config()
+
+PROBLEM_NAME = cfg.CHECKING_PROBLEM
+SOLUTION_NAME = cfg.SOLUTION_NAME
+FOLDER_PATH = cfg.CHECKING_FOLDER
+TESTCASE_PATH = os.path.join(FOLDER_PATH, CHECKING_TESTCASE)
 
 if __name__ == '__main__':
     testcase_list = os.listdir(TESTCASE_PATH)
