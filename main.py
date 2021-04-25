@@ -8,48 +8,22 @@ def write_array(arr):
 def swap(u, v):
     return v, u
 
-def generate_string(n):
-    s = []
-    for j in range(n):
-        t = percentage_chose(50)
-        if t:
-            s.append(1)
-        else:
-            s.append(0)
-    return s
-
-def calc(a, b, n):
-    cnt = 0
-    for i in range(n):
-        if a[i] == b[i]:
-            cnt += 1
-    return cnt
-
-def check(a, s, n):
-    S = set()
-    for arr in a:
-        val = calc(arr, s, n)
-        if val > 5:
-            return -1
-        S.add(val)
-    if len(S) == 1:
-        return S.pop()
-    else:
-        return -1
-
-def change(s, pos, new):
-    l = list(s)
-    l[pos] = chr(new + ord('a'))
-    s = ''.join(l)
-    return s
-
 def writeToFile(f):
-    n = random_int(50000, 60000)
-    a = random_array(1, 60000, n)
-    f.write(str(n) + '\n')
-    for i in range(n):
-        f.write(str(a[i]) + '\n')
-
+    line = random_int(800, 1000)
+    for _ in range(line):
+        num = random_int(1, 3)
+        if num == 1:
+            n = random_int(200, 300)
+            f.write(str(n) + '\n')
+        elif num == 2:
+            n = random_int(200, 300)
+            L1 = random_int(0, 1000)
+            f.write(str(n) + ' ' + str(L1) + '\n')
+        else:
+            n = random_int(200, 300)
+            L1 = random_int(0, 1000)
+            L2 = random_int(L1, 1000)
+            f.write(str(n) + ' ' + str(L1) + ' ' + str(L2) + '\n')
     
     
 

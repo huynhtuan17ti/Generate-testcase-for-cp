@@ -21,6 +21,13 @@ def random_array(start, end, len):
     #random a len-length integer array with values between [start, end]
     return np.random.randint(start, end+1, len)
 
+def random_unique_array(start, end, len):
+    #random a len-length unique integer array with values between [start, end]
+    assert end - start + 1 >= len, "length of array larger than range values"
+    a = random.sample(range(start, end+1), len)
+    a = shuffle_array(a)
+    return a
+
 def random_float(start, end, decimal_places = 2):
     #random a float number up to x decimal places between [start, end]
     return round(random.uniform(start, end), decimal_places)
